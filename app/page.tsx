@@ -82,7 +82,7 @@ export default function Home() {
       </nav>
 
       <section className={styles.hero}>
-        <h1 className={styles.title}>HR Management System</h1>
+        <h1 className={styles.title}>Human Resource Management System</h1>
         <p className={styles.subtitle}>
           Digital onboarding • Hierarchy management • Smart attendance
           <br />
@@ -150,7 +150,7 @@ export default function Home() {
         </div>
       </section>
       <section className={styles.experience}>
-        <h2>Experience Smart HR Management</h2>
+        <h2>Experience Smart HRMS Tool on your mobile</h2>
         <p>
           Manage attendance, leaves, employees, & much more effortlessly
           <br />
