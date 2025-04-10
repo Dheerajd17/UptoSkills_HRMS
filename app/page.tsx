@@ -9,6 +9,19 @@ import { useRouter } from 'next/navigation';
 export default function Home() {
   const { user } = useAuth();
   const router = useRouter();
+
+  const scrollToFeatures = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const featuresSection = document.getElementById('features');
+    featuresSection?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const scrollToContacts = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const contactsSection = document.getElementById('contacts');
+    contactsSection?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   const modules = [
     {
       title: 'Employee Directory',
@@ -62,13 +75,10 @@ export default function Home() {
         </div>
         <div className={styles.navLinks}>
           <Link href="/">Home</Link>
-          <Link href="#features">Features</Link>
-          <Link href="/pricing">Pricing</Link>
-          <Link href="/contacts">Contacts</Link>
+          <Link href="#features" onClick={scrollToFeatures}>Features</Link>
+          <Link href="#contacts" onClick={scrollToContacts}>Contacts</Link>
         </div>
-        <Link href="/get-started" className={styles.getStarted}>
-          Get Started
-        </Link>
+        <Link href="/get-started" className={styles.getStarted}>Get Started</Link>
       </nav>
 
       <section className={styles.hero}>
@@ -84,7 +94,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className={styles.features}>
+      <section id="features" className={styles.features}>
         <h2>Features</h2>
         <div className={styles.featureGrid}>
           {modules.map((feature, index) => (
@@ -99,7 +109,46 @@ export default function Home() {
           ))}
         </div>
       </section>
+     
 
+      <section id="contacts" className={styles.contacts}>
+        <h2>Contact Us</h2>
+        <div className={styles.contactContent}>
+          <div className={styles.contactInfo}>
+            <div className={styles.contactCard}>
+              <h3>Get in Touch</h3>
+              <p>Have questions? We're here to help!</p>
+              <div className={styles.contactDetails}>
+                <div className={styles.contactItem}>
+                  <span className={styles.contactIcon}>📍</span>
+                  <p>Bagdola, Sector 8 Dwarka, Palam, New Delhi, Delhi, 110077</p>
+                </div>
+                <div className={styles.contactItem}>
+                  <span className={styles.contactIcon}>📞</span>
+                  <p>+91 074172 69505</p>
+                </div>
+                <div className={styles.contactItem}>
+                  <span className={styles.contactIcon}>📧</span>
+                  <p>support@uptoskills.com</p>
+                </div>
+                <div className={styles.contactItem}>
+                  <span className={styles.contactIcon}>⏰</span>
+                  <p>Opens 9 AM (Monday - Saturday)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className={styles.contactForm}>
+            <div className={styles.formCard}>
+              <h3>Send us a Message</h3>
+              <input type="text" placeholder="Your Name" />
+              <input type="email" placeholder="Your Email" />
+              <textarea placeholder="Your Message"></textarea>
+              <button className={styles.sendMessage}>Send Message</button>
+            </div>
+          </div>
+        </div>
+      </section>
       <section className={styles.experience}>
         <h2>Experience Smart HR Management</h2>
         <p>
@@ -107,16 +156,10 @@ export default function Home() {
           <br />
           with our mobile HRMS application. Your HR tasks, simplified.
         </p>
-        <button className={styles.downloadButton}>Download Mobile App</button>
+        <button className={styles.downloadButton}>Download Mobile App (Stay Tuned)</button>
       </section>
 
-      <section className={styles.openSource}>
-        <h2>Free & Open Source HR Software</h2>
-        <div className={styles.sourceButtons}>
-          <button className={styles.tryButton}>Try Demo</button>
-          <button className={styles.viewButton}>View Source</button>
-        </div>
-      </section>
+      
     </main>
   );
 }
