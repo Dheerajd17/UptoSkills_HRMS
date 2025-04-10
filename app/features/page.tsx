@@ -42,6 +42,37 @@ const features = [
   }
 ];
 
+const weeklyActivities = [
+  {
+    id: 1,
+    title: 'Team Building Workshop',
+    date: 'Monday, 2:00 PM',
+    location: 'Main Conference Room',
+    type: 'Workshop'
+  },
+  {
+    id: 2,
+    title: 'Virtual Game Night',
+    date: 'Wednesday, 5:00 PM',
+    location: 'Online - Zoom',
+    type: 'Social'
+  },
+  {
+    id: 3,
+    title: 'Wellness Session',
+    date: 'Thursday, 1:00 PM',
+    location: 'Recreation Area',
+    type: 'Health'
+  },
+  {
+    id: 4,
+    title: 'Friday Fun Quiz',
+    date: 'Friday, 4:00 PM',
+    location: 'Break Room',
+    type: 'Entertainment'
+  }
+];
+
 export default function Features() {
   const router = useRouter();
 
@@ -63,6 +94,22 @@ export default function Features() {
             </button>
           </div>
         ))}
+      </div>
+
+      <div className={styles.activitiesSection}>
+        <h2 className={styles.activityTitle}>This Week's Fun Activities</h2>
+        <div className={styles.activitiesGrid}>
+          {weeklyActivities.map((activity) => (
+            <div key={activity.id} className={styles.activityCard}>
+              <span className={styles.activityType}>{activity.type}</span>
+              <h3>{activity.title}</h3>
+              <p className={styles.activityDetails}>
+                <span>📅 {activity.date}</span>
+                <span>📍 {activity.location}</span>
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
